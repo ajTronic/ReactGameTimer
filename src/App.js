@@ -3,7 +3,7 @@ import Timer from "./Components/Timer.js"
 
 function App() {
   return (
-    <Timer/>
+    <Timer start={{seconds: 80}}/>
   );
 }
 
