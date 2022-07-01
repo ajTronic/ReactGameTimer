@@ -1,5 +1,4 @@
 import React from 'react';
-import { Icon } from '@iconify/react';
 import Button from '@mui/material/Button';
 import PlayArrowSharpIcon from '@mui/icons-material/PlayArrowSharp';
 import TimerManager from "easytimer.js";
@@ -10,7 +9,7 @@ class Timer extends React.Component {
         super(props)
         this.props = props
         this.timer = new TimerManager()
-        this.timer.start({countdown: true, startValues: this.props.start});
+        this.timer.start({countdown: true, startValues: this.props.settings});
         this.timer.pause()
         this.state = {
             timeElapesd: this.timer.getTimeValues().toString(),
