@@ -12,7 +12,6 @@
 
 body {
   font-family: Roboto;
-  font-size: clamp(3em, 7vmax, 6em);
   overflow: hidden;
 }
 
@@ -52,27 +51,39 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
+  flex-direction: row;
 
-  .Time {
-    font-family: 'Heebo', sans-serif;
-    line-height: calc(1em + 1rem);
+  .BaseTimer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100%;
+    font-size: clamp(3em, 7vmax, 6em);
 
-    &.Finished {
-      color: var(--primary);
+    .Time {
+      font-family: 'Heebo', sans-serif;
+      line-height: calc(1em + 1rem);
+  
+      &.Finished {
+        color: var(--primary);
+      }
+    }
+  
+    .Btn {
+      font-size: 0.2em;
+    }
+  
+    svg {
+      width: 1.2em;
+      height: 1.2em;
     }
   }
 
-  .Btn {
-    font-size: 0.2em;
-  }
-
-  svg {
-    width: 1.2em;
-    height: 1.2em;
+  .SecondaryTimer {
+    color: red;
   }
 }
