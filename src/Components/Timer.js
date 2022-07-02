@@ -14,7 +14,8 @@ class Timer extends React.Component {
         this.state = {
             timeElapesd: this.timer.getTimeValues().toString(),
             on: false,
-            btnState: "Start"
+            btnState: "Start",
+            finished: false
         }
     }
 
@@ -29,27 +30,32 @@ class Timer extends React.Component {
     }
 
     finish() {
-        var audio = new Audio('./finished.ogg');
-        audio.play();
+        this.setState({ finished: true })
+        var audio = new Audio('./finished.ogg')
+        audio.play()
         document.querySelector(".Time").classList.add("Finished")
+
+        this.timer.stop()
+        this.timer.start({ countdown: false })
     }
-    
+
     render = () => {
         return (
             <div className='Timer'>
-                <div className='Time'>{this.state.timeElapesd}</div>
+                <div className='Time'>
+                    {this.state.finished ? '-' : null}
+                    {this.state.timeElapesd}
+                </div>
                 <Button variant="outlined" className='Btn' onClick={
                     () => this.setState({ on: !this.state.on }, () => {
                         if (this.state.on) {
-                            console.log("Starting timer");
-                            this.timer.start();  
+                            this.timer.start();
                         } else {
-                            console.log("Pauseing timer");
                             this.timer.pause()
                         }
                     })
                 }>
-                    {this.state.on ? <PauseSharpIcon/> : <PlayArrowSharpIcon/>}
+                    {this.state.on ? <PauseSharpIcon /> : <PlayArrowSharpIcon />}
                     {this.state.on ? "Stop" : "Start"}
                 </Button>
             </div>
