@@ -33,7 +33,9 @@ class Settings extends React.Component {
                             this.props.start({minutes: 60 - Number(this.state.text)})
                         }
                     }
-                }} id="standard-basic" label="Game Time Lost" variant="standard" />
+                }} id="standard-basic" label={
+                    <p>Time lost (<i>in minutes</i>)</p>
+                } variant="standard" />
             </div>
         );
     }
