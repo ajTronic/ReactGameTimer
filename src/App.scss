@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Heebo&family=Roboto:ital@0;1&display=swap');
 
 :root {
-  --primary: #7b2ad1
+  --primary: #378FE7 /* or #378FE7, #19D2D1, #D21976 and #76D219*/
 }
 
 * {
@@ -63,7 +63,7 @@ body {
     line-height: calc(1em + 1rem);
 
     &.Finished {
-      color: #b8421e;
+      color: var(--primary);
     }
   }
 
