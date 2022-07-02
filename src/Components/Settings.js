@@ -9,6 +9,14 @@ class Settings extends React.Component {
             text: ""
         }
     }
+
+    componentDidMount() {
+        let input = document.querySelector("label[data-shrink=false]+.MuiInputBase-formControl .css-1x51dt5-MuiInputBase-input-MuiInput-input")
+        const node = document.createAttribute("autocomplete");
+        node.value = "off";
+        input.attributes.setNamedItem(node)
+    }
+
     render() {
         return (
             <div className="Settings">
