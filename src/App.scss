@@ -61,6 +61,10 @@ body {
   .Time {
     font-family: 'Heebo', sans-serif;
     line-height: calc(1em + 1rem);
+
+    &.Finished {
+      color: #b8421e;
+    }
   }
 
   .Btn {
