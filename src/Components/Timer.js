@@ -9,7 +9,7 @@ class Timer extends React.Component {
         super(props)
         this.props = props
         this.timer = new TimerManager()
-        this.timer.start({ countdown: true, startValues: { seconds: 2 } });
+        this.timer.start({ countdown: true, startValues: this.props.settings });
         this.timer.pause()
         this.state = {
             timeElapesd: this.timer.getTimeValues().toString(),
