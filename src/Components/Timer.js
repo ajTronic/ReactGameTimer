@@ -75,7 +75,7 @@ class Timer extends React.Component {
                             }
                         })
                     }>
-                        {this.state.on ? <PauseSharpIcon /> : <PlayArrowSharpIcon />}
+                        {this.state.on ? <PauseSharpIcon/> : <PlayArrowSharpIcon/>}
                         {this.state.on ? "Stop" : "Start"}
                     </Button>
                     {
@@ -83,7 +83,7 @@ class Timer extends React.Component {
                             <Button className="ResetBtn Btn" variant="outlined" onClick={
                                 () => this.reset()
                             }>
-                                <RestartAltIcon />
+                                <RestartAltIcon/>
                                 Reset
                             </Button>
                         ) : null

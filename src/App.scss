@@ -13,7 +13,7 @@
 
 body {
   font-family: Roboto;
-  font-size: clamp(4em, 7vmax, 6em);
+  font-size: clamp(5em, 7vmax, 6em);
   overflow: hidden;
 }
 
@@ -60,7 +60,6 @@ body {
   height: 100%;
   flex-direction: row;
   flex-wrap: wrap;
-  padding: 2vmax;
 
   @include flexyCenter();
 
@@ -68,11 +67,11 @@ body {
     @include flexyCenter();
     flex-direction: column;
 
-    margin: 4.5vmax;
+    margin: 6vmax;
 
     .Time {
       font-family: 'Heebo', sans-serif;
-      line-height: calc(1em + 1rem);
+      line-height: calc(0.5em);
       text-shadow: 0 0 0.2em #283746e1;
     }
 
@@ -85,12 +84,13 @@ body {
     }
 
     .Btn {
-      margin-left: 1vw;
+      margin-left: max(20px, 1vw);
       font-size: 0.2em;
       min-height: 2.5rem;
     }
 
     svg {
+      font-size: inherit;
       width: 1.2em;
       height: 1.2em;
     }
