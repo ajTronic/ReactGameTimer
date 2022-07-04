@@ -4,11 +4,50 @@
   --primary: #378fe7; /* or #378FE7, #19D2D1, #D21976 and #76D219*/
 }
 
+@mixin theme($light-theme: false) {
+  @if $light-theme {
+    color-scheme: light;
+
+    .Timers .Timer .Time {
+      text-shadow: 0 0 0.2em #374e6479;
+    }
+  } @else {
+    background-color: rgb(18, 18, 19);
+    color-scheme: dark;
+    color: white !important;
+
+    .Settings {
+      div label p {
+        color: white !important;
+      }
+
+      *::before {
+        border-bottom-color: white !important;
+      }
+
+      .css-1ptx2yq-MuiInputBase-root-MuiInput-root:after {
+        border-bottom-color: var(--primary) !important;
+      }
+    }
+
+    .Timers .Timer .Time {
+      text-shadow: 0 0 0.2em #283746e1;
+    }
+  }
+}
+
 * {
-  color-scheme: dark;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+body.dark {
+  @include theme($light-theme: false);
+}
+
+body.light {
+  @include theme($light-theme: true);
 }
 
 body {
@@ -32,18 +71,6 @@ body {
   font-size: 0.6em;
 
   transform: scale(1.5);
-
-  .css-1ptx2yq-MuiInputBase-root-MuiInput-root:after {
-    border-bottom-color: var(--primary) !important;
-  }
-
-  * {
-    color: white !important;
-  }
-
-  *::before {
-    border-bottom-color: white !important;
-  }
 }
 
 @mixin flexyCenter {
@@ -71,8 +98,7 @@ body {
 
     .Time {
       font-family: 'Heebo', sans-serif;
-      line-height: calc(0.5em);
-      text-shadow: 0 0 0.2em #283746e1;
+      line-height: 1em;
     }
 
     .Minus {
