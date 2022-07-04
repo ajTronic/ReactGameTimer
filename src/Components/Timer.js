@@ -1,20 +1,20 @@
-import React from 'react';
-import Button from '@mui/material/Button';
-import PlayArrowSharpIcon from '@mui/icons-material/PlayArrowSharp';
-import TimerManager from "easytimer.js";
-import PauseSharpIcon from '@mui/icons-material/PauseSharp';
-import RestartAltIcon from '@mui/icons-material/RestartAlt';
+import React from 'react'
+import Button from '@mui/material/Button'
+import PlayArrowSharpIcon from '@mui/icons-material/PlayArrowSharp'
+import TimerManager from "easytimer.js"
+import PauseSharpIcon from '@mui/icons-material/PauseSharp'
+import RestartAltIcon from '@mui/icons-material/RestartAlt'
 
 class Timer extends React.Component {
-    constructor(props) {
+    constructor(props)  {
         super(props)
         this.props = props
         this.timer = new TimerManager()
-        this.timer.start({ countdown: true, startValues: this.props.settings });
+        this.timer.start({ countdown: true, startValues: this.props.settings })
         this.timer.pause()
         this.DOMElement = null
         this.state = {
-            timeElapesd: this.timer.getTimeValues().toString(),
+            timeElapesd: this.getTimeElapsed().toString(),
             on: false,
             btnState: "Start",
             finished: false
@@ -25,9 +25,9 @@ class Timer extends React.Component {
         this.DOMElement = element;
     }
 
-    componentDidMount() {
+    componentDidMount = () => {
         this.timer.addEventListener('secondsUpdated', () => {
-            this.setState({ timeElapesd: this.timer.getTimeValues().toString() })
+            this.setState({ timeElapesd: this.getTimeElapsed().toString() })
         })
 
         this.timer.addEventListener('targetAchieved', () => {
@@ -35,7 +35,7 @@ class Timer extends React.Component {
         })
     }
 
-    finish() {
+    finish = () => {
         this.setState({ finished: true })
         var audio = new Audio('./finished.ogg')
         audio.play()
@@ -46,12 +46,16 @@ class Timer extends React.Component {
         this.timer.start({ countdown: false })
     }
 
-    reset() {
+    reset = () => {
         this.timer.stop()
-        this.timer.start({ countdown: true, startValues: this.props.settings });
+        this.timer.start({ countdown: true, startValues: this.props.settings })
         this.timer.pause()
-        this.setState({ on: false, timeElapesd: this.timer.getTimeValues().toString() })
+        this.setState({ on: false, timeElapesd: this.getTimeElapsed().toString() })
         this.forceUpdate()
+    }
+
+    getTimeElapsed = () => {
+        return this.timer.getTimeValues()
     }
 
     render = () => {
