@@ -3,7 +3,7 @@ import Button from '@mui/material/Button';
 import PlayArrowSharpIcon from '@mui/icons-material/PlayArrowSharp';
 import TimerManager from "easytimer.js";
 import PauseSharpIcon from '@mui/icons-material/PauseSharp';
-import { ReactDOM } from 'react';
+import RestartAltIcon from '@mui/icons-material/RestartAlt';
 
 class Timer extends React.Component {
     constructor(props) {
@@ -46,6 +46,14 @@ class Timer extends React.Component {
         this.timer.start({ countdown: false })
     }
 
+    reset() {
+        this.timer.stop()
+        this.timer.start({ countdown: true, startValues: this.props.settings });
+        this.timer.pause()
+        this.setState({ on: false, timeElapesd: this.timer.getTimeValues().toString() })
+        this.forceUpdate()
+    }
+
     render = () => {
         return (
             <div className='Timer' ref={this.setRef}>
@@ -53,18 +61,30 @@ class Timer extends React.Component {
                     {this.state.finished ? <span className='Minus'>-</span> : null}
                     {this.state.timeElapesd}
                 </div>
-                <Button variant="outlined" className='Btn' onClick={
-                    () => this.setState({ on: !this.state.on }, () => {
-                        if (this.state.on) {
-                            this.timer.start();
-                        } else {
-                            this.timer.pause()
-                        }
-                    })
-                }>
-                    {this.state.on ? <PauseSharpIcon /> : <PlayArrowSharpIcon />}
-                    {this.state.on ? "Stop" : "Start"}
-                </Button>
+                <div>
+                    <Button variant="outlined" className='Btn' onClick={
+                        () => this.setState({ on: !this.state.on }, () => {
+                            if (this.state.on) {
+                                this.timer.start();
+                            } else {
+                                this.timer.pause()
+                            }
+                        })
+                    }>
+                        {this.state.on ? <PauseSharpIcon /> : <PlayArrowSharpIcon />}
+                        {this.state.on ? "Stop" : "Start"}
+                    </Button>
+                    {
+                        this.props.resetBtn ? (
+                            <Button className="ResetBtn Btn" variant="outlined" onClick={
+                                () => this.reset()
+                            }>
+                                <RestartAltIcon />
+                                Reset
+                            </Button>
+                        ) : null
+                    }
+                </div>
             </div>
         );
     }
