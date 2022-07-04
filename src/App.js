@@ -35,7 +35,7 @@ class App extends React.Component {
           {/* Main timer */}
           <Timer settings={this.state.settings} />
           {/* Break timer */}
-          <Timer settings={{seconds: 2}} /> 
+          <Timer settings={{minutes: 15}} /> 
         </div>
       )
     else

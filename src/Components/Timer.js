@@ -50,7 +50,7 @@ class Timer extends React.Component {
         return (
             <div className='Timer' ref={this.setRef}>
                 <div className='Time'>
-                    {this.state.finished ? '-' : null}
+                    {this.state.finished ? <span className='Minus'>-</span> : null}
                     {this.state.timeElapesd}
                 </div>
                 <Button variant="outlined" className='Btn' onClick={
